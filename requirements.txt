@@ -1,5 +1,5 @@
-rembg==2.0.25
-onnxruntime==1.8.1
-streamlit
+rembg
+onnxruntime-gpu
+streamlit==1.36.0
 numpy
 pandas

@@ -1,5 +1,5 @@
-rembg
-onnxruntime
+rembg==2.0.25
+onnxruntime==1.8.1
 streamlit
 numpy
 pandas

@@ -8,5 +8,5 @@ class RemImgBackground:
     def remBg(self, img):
         self.img=img
         out=remove(self.img)
-        out.save('images/out.png')
+        # out.save('images/out.png')
         return out

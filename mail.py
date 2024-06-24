@@ -7,13 +7,16 @@ import os
 import io
 from PIL import Image
 import numpy as np
+import streamlit as st
 
-# Load environment variables from .env file
-load_dotenv()
+# # Load environment variables from .env file
+# load_dotenv()
 
 # Email credentials
-EMAIL_ADDRESS = os.getenv('EMAIL_ADDRESS')
-EMAIL_PASSWORD = os.getenv('EMAIL_PASSWORD')
+# EMAIL_ADDRESS = os.getenv('EMAIL_ADDRESS')
+# EMAIL_PASSWORD = os.getenv('EMAIL_PASSWORD')
+EMAIL_ADDRESS = st.secrets["general"]["EMAIL_ADDRESS"]
+EMAIL_PASSWORD = st.secrets["general"]["EMAIL_PASSWORD"]
 
 def sendEmail(recipient_email, images, user, symmScore, side):
     try:

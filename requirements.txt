@@ -1,1 +1,5 @@
 rembg
+onnxruntime==1.8.1
+streamlit
+numpy
+pandas

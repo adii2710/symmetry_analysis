@@ -1,6 +1,7 @@
 rembg==2.0.57
 onnxruntime==1.15.0
-streamlit==1.36.0
+streamlit==1.32.2
+python==3.10.11
 numpy
 pandas
 jsonschema

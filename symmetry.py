@@ -1,11 +1,8 @@
 import streamlit as st
 from PIL import Image
 from crop_img import RemImgBackground
-import matplotlib.pyplot as plt
 from symmetry_module import SymmetryAnalysis
-import cv2
 import mail
-import numpy as np
 
 def resizeImgs(img1, img2):
     #get the size of img 
@@ -61,7 +58,6 @@ if view_type == "Front/Rear View":
     # st.write(type(np.asarray(front_rear_image)))
     if front_rear_image:
         front_rear_image = Image.open(front_rear_image)
-        front_rear_image=np.array(front_rear_image)
         front_rear_image=rembackground.remBg(front_rear_image)
         
 elif view_type == "Side View":
@@ -70,10 +66,8 @@ elif view_type == "Side View":
     side_image2 = st.file_uploader("Upload Left Side Image", type=["jpg", "jpeg", "png"])
     if side_image1 and side_image2:
         side_image1 = Image.open(side_image1)
-        side_image1 = np.array(side_image1)
         side_image1 = rembackground.remBg(side_image1)
         side_image2 = Image.open(side_image2)
-        side_image2 = np.array(side_image2)
         side_image2 = rembackground.remBg(side_image2)
         side=1
         side_image1, side_image2=resizeImgs(side_image1, side_image2)
@@ -84,6 +78,7 @@ images=[]
 symmetry_percent=''
 # Button to trigger analysis
 if st.button("Perform Symmetry Analysis"):
+    # if front_rear_image or (side_image1 and side_image2):
     if front_rear_image or (side_image1 and side_image2):
         analysis = SymmetryAnalysis(front_rear_image, side_image1, side_image2, side=1 if view_type == "Side View" else 0, base=base)
         st.session_state.analysis_results = analysis.calcSymmetry()

@@ -1,15 +1,1 @@
-rembg==2.0.57
-onnxruntime==1.18.0
-streamlit==1.36.0
-numpy
-pandas
-jsonschema
-onnxruntime
-opencv-python
-pillow
-pooch
-pymatting
-scikit-image
-scipy 
-tqdm
-pybind11>=2.12
+numpy==1.26.4

@@ -27,7 +27,7 @@ def resizeImgs(img1, img2):
 st.set_page_config(page_title="Symmetry Analysis")
 
 # Title of the app
-st.title("Symmetry Analysis Project")
+st.title("Symmetry Analysis")
 
 # Input fields for user details
 user_name = st.text_input("Name of User")

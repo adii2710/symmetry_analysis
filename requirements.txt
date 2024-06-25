@@ -12,3 +12,4 @@ pymatting
 scikit-image
 scipy 
 tqdm
+pybind11>=2.12

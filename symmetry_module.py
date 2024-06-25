@@ -99,7 +99,7 @@ class SymmetryAnalysis:
 
             # Extract and mirror points from the right half
             self.right_points = np.column_stack(np.where(right_half > 0))
-            self.right_points[:, 1] = width-self.right_points[:, 1] - 1
+            # self.right_points[:, 1] = width-self.right_points[:, 1] - 1
             imgForGray=side1_img
 
         # Mirror the right half

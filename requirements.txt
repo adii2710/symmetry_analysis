@@ -1,11 +1,11 @@
 rembg==2.0.57
 onnxruntime==1.18.0
 streamlit==1.36.0
-numpy<2
+numpy
 pandas
 jsonschema
 onnxruntime
-opencv-python-headless 
+opencv-python
 pillow
 pooch
 pymatting

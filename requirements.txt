@@ -12,4 +12,4 @@ pymatting
 scikit-image
 scipy 
 tqdm
-python==3.10.11
+python==3.12.1

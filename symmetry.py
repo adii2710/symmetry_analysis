@@ -29,6 +29,22 @@ st.set_page_config(page_title="Symmetry Analysis")
 # Title of the app
 st.title("Symmetry Analysis")
 
+# Displaying instructions using Markdown
+st.sidebar.markdown("""
+    # Instructions for Using the Application
+    # **Hey hi, Welcome**
+    **Provide Appropriate Images for analysis.**
+
+    1. **Step One**:  📁 Upload your data file using the file uploader on the sidebar.
+    2. **Step Two**: ⚙️ Select the options you want to apply.
+    3. **Step Three**:  🚀 Click the "Analyze symmertry" button to process your data.
+    4. **Step Four**:  📊 View the results in the output section below.
+
+    Feel free to explore the different features and options available in the application.
+
+    For any questions or issues, please contact adityakhopade2003@gmail.com.
+""")
+
 # Input fields for user details
 user_name = st.text_input("Name of User")
 user_email = st.text_input("User Email")
@@ -44,6 +60,9 @@ if 'images' not in st.session_state:
     st.session_state.images = []
 if 'analysis_results' not in st.session_state:
     st.session_state.analysis_results = None
+if 'symmetry_percent' not in st.session_state:
+    st.session_state.symmetry_percent=None
+
 
 # Conditional rendering of image upload fields based on view type
 # front_rear_image = None
@@ -74,17 +93,16 @@ elif view_type == "Side View":
         st.image(side_image1)
         st.image(side_image2)
         
-images=[]
-symmetry_percent=''
+
 # Button to trigger analysis
-if st.button("Perform Symmetry Analysis"):
+if st.button("Analyze symmetry"):
     # if front_rear_image or (side_image1 and side_image2):
     if front_rear_image or (side_image1 and side_image2):
         analysis = SymmetryAnalysis(front_rear_image, side_image1, side_image2, side=1 if view_type == "Side View" else 0, base=base)
         st.session_state.analysis_results = analysis.calcSymmetry()
-        symmetry_percentage = round(st.session_state.analysis_results[0])
+        st.session_state.symmetry_percent = round(st.session_state.analysis_results[0])
         st.subheader("Symmetry Percentage")
-        st.write(f"{symmetry_percentage}%")
+        st.write(f"{st.session_state.symmetry_percent}%")
             
         st.session_state.images = [
             st.session_state.analysis_results[1],
@@ -94,16 +112,16 @@ if st.button("Perform Symmetry Analysis"):
 
 # Check if analysis results are available to display the images
 if st.session_state.analysis_results:
-    if st.button("See the analysis"):
-        st.image(st.session_state.analysis_results[1])
-        st.image(st.session_state.analysis_results[2])
-        st.image(st.session_state.analysis_results[3])
+    if st.button("View analysis"):
+        st.image(st.session_state.analysis_results[1], caption='fliped version with another half')
+        st.image(st.session_state.analysis_results[2], caption='regions matched')
+        st.image(st.session_state.analysis_results[3], caption='regions not matched')
 
 
 # Check if images are available to send via email
 if st.session_state.images:
-    if st.button("Get mail copy of results"):
-        mail.sendEmail(user_email, st.session_state.images, user_name, symmetry_percent, view_type)
+    if st.button("Get mail of results"):
+        mail.sendEmail(user_email, st.session_state.images, user_name, st.session_state.symmetry_percent, view_type)
 
 # if __name__ == "__main__":
 #     st.write("Welcome to the Symmetry Analysis Project.")

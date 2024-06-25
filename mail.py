@@ -37,6 +37,7 @@ def sendEmail(recipient_email, images, user, symmScore, side):
         msg.attach(MIMEText(body, 'plain'))
         # print("mail body done")
         
+        result=['fliped version with another half', 'regions matched', 'regions not matched']
         # Attach images
         for i, img in enumerate(images):
             if isinstance(img, np.ndarray):
@@ -44,7 +45,8 @@ def sendEmail(recipient_email, images, user, symmScore, side):
             buffered = io.BytesIO()
             img.save(buffered, format="PNG")
             img_data = buffered.getvalue()
-            image_mime = MIMEImage(img_data, name=f"result_image_{i + 1}.png")
+            image_mime = MIMEImage(img_data, name=f"{result[i]}.png")
+            i +=1
             msg.attach(image_mime)
 
         # Send the email

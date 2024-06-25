@@ -12,4 +12,3 @@ pymatting
 scikit-image
 scipy 
 tqdm
-python

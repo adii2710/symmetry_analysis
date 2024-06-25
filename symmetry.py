@@ -87,6 +87,7 @@ elif view_type == "Side View":
         side_image1 = Image.open(side_image1)
         side_image1 = rembackground.remBg(side_image1)
         side_image2 = Image.open(side_image2)
+        side_image2=side_image2.transpose(Image.FLIP_LEFT_RIGHT)
         side_image2 = rembackground.remBg(side_image2)
         side=1
         side_image1, side_image2=resizeImgs(side_image1, side_image2)

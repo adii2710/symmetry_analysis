@@ -78,6 +78,7 @@ if view_type == "Front/Rear View":
     if front_rear_image:
         front_rear_image = Image.open(front_rear_image)
         front_rear_image=rembackground.remBg(front_rear_image)
+        st.image(front_rear_image)
         
 elif view_type == "Side View":
     st.write("Upload Side Images")
